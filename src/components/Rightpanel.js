@@ -87,7 +87,7 @@ const ProfileIcon = styled.div`
   }
 
   @media (max-width: 480px) {
-    margin-top: 20px;
+    margin-top: 15px;
   }
 `;
 
@@ -95,6 +95,7 @@ const ProfileAndStopwatchWrapper = styled.div`
   display: flex;
   align-items: center;
   padding-left: 10px;
+  position: relative; /* Ensure the dropdown is positioned relative to this container */
 
   @media (max-width: 480px) {
     flex-direction: column;
@@ -114,8 +115,8 @@ const Divider = styled.div`
 `;
 
 const DropdownMenu = styled.div`
-  position: absolute;
-  top: 60px;
+  position: absolute; /* Use absolute positioning relative to ProfileAndStopwatchWrapper */
+  top: 60px; /* Adjust based on the height of ProfileIcon and other elements */
   right: 0;
   width: 200px;
   background-color: #fff;
@@ -123,16 +124,17 @@ const DropdownMenu = styled.div`
   border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   display: ${props => (props.show ? 'block' : 'none')};
-  z-index: 20;
-
+  z-index: 30; /* Ensure it is above other content */
+  
   @media (max-width: 768px) {
     width: 180px;
-    top: 50px;
+    top: 50px; /* Adjust based on screen size */
   }
 
   @media (max-width: 480px) {
     width: 150px;
-    top: 60px;
+    top: 50px; /* Adjust to appear below the profile icon */
+    right: 0;
   }
 `;
 
@@ -210,28 +212,28 @@ const RightPanel = () => {
           <FaRegUserCircle size={40} />
           <FaChevronDown size={20} />
         </ProfileIcon>
+        <DropdownMenu show={showMenu}>
+          <MenuHeader>
+            <MenuHeaderImage></MenuHeaderImage>
+            <MenuHeaderText>
+              <div>John Doe</div>
+              <div>UI/UX Designer</div>
+            </MenuHeaderText>
+          </MenuHeader>
+          <MenuItem>
+            <FaRegUserCircle />
+            Profile
+          </MenuItem>
+          <MenuItem>
+            <AiOutlineSetting />
+            Account Settings
+          </MenuItem>
+          <MenuItem>
+            <IoMdLogOut style={{ color: 'red' }} />
+            Logout
+          </MenuItem>
+        </DropdownMenu>
       </ProfileAndStopwatchWrapper>
-      <DropdownMenu show={showMenu}>
-        <MenuHeader>
-          <MenuHeaderImage></MenuHeaderImage>
-          <MenuHeaderText>
-            <div>John Doe</div>
-            <div>UI/UX Designer</div>
-          </MenuHeaderText>
-        </MenuHeader>
-        <MenuItem>
-          <FaRegUserCircle />
-          Profile
-        </MenuItem>
-        <MenuItem>
-          <AiOutlineSetting />
-          Account Settings
-        </MenuItem>
-        <MenuItem>
-          <IoMdLogOut style={{ color: 'red' }} />
-          Logout
-        </MenuItem>
-      </DropdownMenu>
     </RightPanelWrapper>
   );
 };
