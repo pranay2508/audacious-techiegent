@@ -87,7 +87,7 @@ const ProfileIcon = styled.div`
   }
 
   @media (max-width: 480px) {
-    margin-top: 8px;
+    margin-top: 20px;
   }
 `;
 
@@ -115,7 +115,7 @@ const Divider = styled.div`
 
 const DropdownMenu = styled.div`
   position: absolute;
-  top: 70px;
+  top: 60px;
   right: 0;
   width: 200px;
   background-color: #fff;
@@ -123,15 +123,16 @@ const DropdownMenu = styled.div`
   border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   display: ${props => (props.show ? 'block' : 'none')};
-  z-index: 10;
+  z-index: 20;
 
   @media (max-width: 768px) {
     width: 180px;
+    top: 50px;
   }
 
   @media (max-width: 480px) {
     width: 150px;
-    top: 45px; /* Adjusted to ensure it appears below the profile icon */
+    top: 60px;
   }
 `;
 
