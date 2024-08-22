@@ -95,7 +95,7 @@ const ProfileAndStopwatchWrapper = styled.div`
   display: flex;
   align-items: center;
   padding-left: 10px;
-  position: relative; /* Ensure the dropdown is positioned relative to this container */
+  position: relative;
 
   @media (max-width: 480px) {
     flex-direction: column;
@@ -115,8 +115,8 @@ const Divider = styled.div`
 `;
 
 const DropdownMenu = styled.div`
-  position: absolute; /* Use absolute positioning relative to ProfileAndStopwatchWrapper */
-  top: 60px; /* Adjust based on the height of ProfileIcon and other elements */
+  position: absolute; 
+  top: 60px;
   right: 0;
   width: 200px;
   background-color: #fff;
@@ -124,16 +124,16 @@ const DropdownMenu = styled.div`
   border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   display: ${props => (props.show ? 'block' : 'none')};
-  z-index: 30; /* Ensure it is above other content */
+  z-index: 30;
   
   @media (max-width: 768px) {
     width: 180px;
-    top: 50px; /* Adjust based on screen size */
+    top: 50px;
   }
 
   @media (max-width: 480px) {
     width: 150px;
-    top: 50px; /* Adjust to appear below the profile icon */
+    top: 50px; 
     right: 0;
   }
 `;

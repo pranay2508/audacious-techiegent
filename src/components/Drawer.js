@@ -19,11 +19,11 @@ const DrawerWrapper = styled.div`
   box-sizing: border-box;
 
   @media (max-width: 768px) {
-    width: 80%; /* Adjust width for smaller screens */
+    width: 80%; 
   }
 
   @media (max-width: 480px) {
-    width: 100%; /* Full width on very small screens */
+    width: 100%;
   }
 `;
 
@@ -100,7 +100,7 @@ const IconItem = styled.div`
   font-size: 14px;
   font-weight: 550;
   color: #2c3e50;
-  border-radius: 4px; /* Rounded corners */
+  border-radius: 4px; 
   transition: background-color 0.3s;
   padding-left: 30px;
   cursor: pointer;
