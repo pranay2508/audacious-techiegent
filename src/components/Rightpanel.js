@@ -11,9 +11,18 @@ const RightPanelWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 10px;
   box-sizing: border-box;
+  z-index: 20;
+
+  @media (max-width: 768px) {
+    right: 10px;
+  }
+
+  @media (max-width: 480px) {
+    right: 5px;
+    padding: 5px;
+  }
 `;
 
 const StopwatchWrapper = styled.div`
@@ -25,10 +34,22 @@ const StopwatchWrapper = styled.div`
   color: #333;
   width: 100px;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    width: 80px;
+  }
+
+  @media (max-width: 480px) {
+    width: 60px;
+  }
 `;
 
 const TimeDisplay = styled.div`
-  font-size: 14px;
+  font-size: 12px;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
 
 const StopButton = styled.div`
@@ -36,12 +57,21 @@ const StopButton = styled.div`
   color: #fff;
   background-color: #f00;
   border-radius: 4px;
-  padding: 5px;
+  padding: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
+
   svg {
-    font-size: 16px;
+    font-size: 14px;
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 10px;
+    }
   }
 `;
 
@@ -50,12 +80,22 @@ const ProfileIcon = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
+  margin-top: 10px;
+
+  svg {
+    margin-left: 5px;
+  }
 `;
 
 const ProfileAndStopwatchWrapper = styled.div`
   display: flex;
   align-items: center;
   padding-left: 10px;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-end;
+  }
 `;
 
 const Divider = styled.div`
@@ -63,11 +103,15 @@ const Divider = styled.div`
   width: 1px;
   background-color: gray;
   margin: 0 10px;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const DropdownMenu = styled.div`
   position: absolute;
-  top: 50px;
+  top: 70px;
   right: 0;
   width: 200px;
   background-color: #fff;
@@ -76,6 +120,15 @@ const DropdownMenu = styled.div`
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   display: ${props => (props.show ? 'block' : 'none')};
   z-index: 10;
+
+  @media (max-width: 768px) {
+    width: 180px;
+  }
+
+  @media (max-width: 480px) {
+    width: 150px;
+    top: 45px;
+  }
 `;
 
 const MenuHeader = styled.div`
@@ -83,6 +136,10 @@ const MenuHeader = styled.div`
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid #eee;
+
+  @media (max-width: 480px) {
+    padding: 8px;
+  }
 `;
 
 const MenuHeaderImage = styled.div`
@@ -91,11 +148,21 @@ const MenuHeaderImage = styled.div`
   border-radius: 50%;
   background-color: #f0f0f0;
   margin-right: 10px;
+
+  @media (max-width: 480px) {
+    width: 35px;
+    height: 35px;
+  }
 `;
 
 const MenuHeaderText = styled.div`
   display: flex;
   flex-direction: column;
+  font-size: 14px;
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
 `;
 
 const MenuItem = styled.div`
@@ -109,6 +176,15 @@ const MenuItem = styled.div`
 
   svg {
     margin-right: 10px;
+    font-size: 16px;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 12px;
+    }
   }
 `;
 

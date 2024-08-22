@@ -29,8 +29,17 @@ const LeftPanelContainer = styled.div`
   align-items: center;
   padding: 10px 0;
   border-right: 2px solid lightgrey;
-  position: relative;
+  position: fixed;
   z-index: 20;
+  transition: width 0.3s ease;
+
+  @media (max-width: 768px) {
+    width: 50px;
+  }
+
+  @media (max-width: 480px) {
+    width: 40px;
+  }
 `;
 
 const IconWrapper = styled.div`
@@ -86,6 +95,15 @@ const Tooltip = styled.div`
     border-color: transparent #333 transparent transparent;
     border-radius: 2px;
   }
+
+  @media (max-width: 768px) {
+    left: 40px;
+  }
+
+  @media (max-width: 480px) {
+    left: 30px;
+    font-size: 10px;
+  }
 `;
 
 const Divider = styled.hr`
@@ -123,6 +141,16 @@ const DrawerContainer = styled.div`
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   transition: left 0.3s ease;
   z-index: 10;
+
+  @media (max-width: 768px) {
+    width: 250px;
+    left: ${({ isOpen }) => (isOpen ? '50px' : '-250px')};
+  }
+
+  @media (max-width: 480px) {
+    width: 200px;
+    left: ${({ isOpen }) => (isOpen ? '40px' : '-200px')};
+  }
 `;
 
 const CenterContent = styled.div`
@@ -141,11 +169,30 @@ const RandomPhoto = styled.img`
   height: 600px;
   object-fit: cover;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    width: 400px;
+    height: 400px;
+  }
+
+  @media (max-width: 480px) {
+    width: 300px;
+    height: 300px;
+  }
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    gap: 15px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 10px;
+    flex-direction: column;
+  }
 `;
 
 const IconButton = styled.button`
@@ -157,6 +204,14 @@ const IconButton = styled.button`
   display: flex;
   align-items: center;
   gap: 5px;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
 `;
 
 const LeftPanel = () => {

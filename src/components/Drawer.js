@@ -5,14 +5,11 @@ import { VscFeedback } from "react-icons/vsc";
 import { BsPersonWorkspace } from "react-icons/bs";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { IoSearchSharp } from "react-icons/io5";
-import { FaPersonCircleCheck } from "react-icons/fa6";
-import { FaPersonCircleXmark } from "react-icons/fa6";
-import { GiMoneyStack } from "react-icons/gi";
+import { FaPersonCircleCheck, FaPersonCircleXmark } from "react-icons/fa6";
+import { GiMoneyStack, GiReceiveMoney, GiTakeMyMoney } from "react-icons/gi";
 import { TbReport } from "react-icons/tb";
-import { GiReceiveMoney } from "react-icons/gi";
-import { IoSettingsOutline } from "react-icons/io5";
 import { HiMiniSquare3Stack3D } from "react-icons/hi2";
-import { GiTakeMyMoney } from "react-icons/gi";
+import { IoSettingsOutline } from "react-icons/io5";
 
 const DrawerWrapper = styled.div`
   display: flex;
@@ -20,6 +17,14 @@ const DrawerWrapper = styled.div`
   height: 100%;
   width: 100%;
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    width: 80%; /* Adjust width for smaller screens */
+  }
+
+  @media (max-width: 480px) {
+    width: 100%; /* Full width on very small screens */
+  }
 `;
 
 const SearchContainer = styled.div`
@@ -27,9 +32,14 @@ const SearchContainer = styled.div`
   flex-direction: column;
   width: 100%;
   margin-bottom: 5px;
-  margin-top:8px;
+  margin-top: 8px;
   padding: 8px;
   border-radius: 5px;
+
+  @media (max-width: 768px) {
+    margin-top: 5px;
+    padding: 5px;
+  }
 `;
 
 const SearchInputContainer = styled.div`
@@ -47,6 +57,14 @@ const SearchIcon = styled.div`
   font-size: 20px;
   color: #ccc;
   margin-right: 8px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
 `;
 
 const SearchBar = styled.input`
@@ -55,6 +73,10 @@ const SearchBar = styled.input`
   flex-grow: 1;
   font-size: 14px;
   width: 100%;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const Divider = styled.hr`
@@ -80,22 +102,36 @@ const IconItem = styled.div`
   color: #2c3e50;
   border-radius: 4px; /* Rounded corners */
   transition: background-color 0.3s;
-  padding-left:30px;
+  padding-left: 30px;
+  cursor: pointer;
+
   svg {
     margin-right: 10px;
     font-size: 20px;
     color: darkgray;
     transition: color 0.3s;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 16px;
+    }
   }
 
   &:hover svg {
     color: #2c3e50;
   }
+
   &:hover {
     background-color: lightgray;
   }
 
-  cursor: pointer;
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding-left: 20px;
+  }
 `;
 
 const Head = styled.div`
@@ -103,6 +139,16 @@ const Head = styled.div`
   padding-left: 15px;
   font-weight: 550;
   margin-bottom: 6px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    padding-left: 10px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+    padding-left: 5px;
+  }
 `;
 
 const iconData = [
@@ -142,7 +188,7 @@ const Drawers = () => {
         </SearchInputContainer>
       </SearchContainer>
       <Divider />
-      <Head><div>My Options</div></Head>
+      <Head>My Options</Head>
       <IconList>
         {filteredIcons.map((item, index) => (
           <React.Fragment key={item.id}>
