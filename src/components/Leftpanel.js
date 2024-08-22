@@ -5,12 +5,13 @@ import { MdWindow } from "react-icons/md";
 import { IoPeopleOutline } from "react-icons/io5";
 import { TbNotes } from "react-icons/tb";
 import { LuFileSpreadsheet } from "react-icons/lu";
-import { AiOutlineDollarCircle } from "react-icons/ai";
+import { AiOutlineDollarCircle, AiOutlineLike, AiOutlineShareAlt, AiOutlineComment } from "react-icons/ai";
 import { TbCalendarUser } from "react-icons/tb";
 import { TbSettingsDollar } from "react-icons/tb";
 import { IoMdLogOut } from "react-icons/io";
 import { FaGem } from "react-icons/fa";
-import Drawers from "./Drawer"; 
+import Drawers from "./Drawer";
+import myPhoto from './../assets/nature.webp';  
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -86,12 +87,14 @@ const Tooltip = styled.div`
     border-radius: 2px;
   }
 `;
+
 const Divider = styled.hr`
   width: 100%;
   border: none;
   border-top: 1px solid #ccc;
   margin-bottom: 5px;
 `;
+
 const BrandSymbol = styled.div`
   display: flex;
   align-items: center;
@@ -122,6 +125,40 @@ const DrawerContainer = styled.div`
   z-index: 10;
 `;
 
+const CenterContent = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+`;
+
+const RandomPhoto = styled.img`
+  width: 600px;
+  height: 600px;
+  object-fit: cover;
+  margin-bottom: 20px;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
+const IconButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+`;
+
 const LeftPanel = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [drawerContent, setDrawerContent] = useState("");
@@ -147,7 +184,7 @@ const LeftPanel = () => {
           <FaGem />
           <span style={{ position: "absolute", fontSize: "10px", bottom: "5px" }}>ZH</span>
         </BrandSymbol>
-      <Divider/>
+        <Divider/>
         <IconWrapper onClick={() => handleIconClick("Dashboard Content")}>
           <MdWindow />
           <Tooltip>My Options</Tooltip>
@@ -189,6 +226,24 @@ const LeftPanel = () => {
       <DrawerContainer isOpen={isDrawerOpen}>
         <Drawers /> 
       </DrawerContainer>
+
+      <CenterContent>
+        <RandomPhoto src={myPhoto} alt="Random photo" />
+        <ButtonContainer>
+          <IconButton>
+            <AiOutlineLike />
+            Like
+          </IconButton>
+          <IconButton>
+            <AiOutlineShareAlt />
+            Share
+          </IconButton>
+          <IconButton>
+            <AiOutlineComment />
+            Comment
+          </IconButton>
+        </ButtonContainer>
+      </CenterContent>
     </>
   );
 };
