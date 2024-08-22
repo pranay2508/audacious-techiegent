@@ -1,0 +1,162 @@
+import React, { useState } from "react";
+import styled from "styled-components";
+import { MdComputer } from "react-icons/md";
+import { VscFeedback } from "react-icons/vsc";
+import { BsPersonWorkspace } from "react-icons/bs";
+import { FaRegCalendarAlt } from "react-icons/fa";
+import { IoSearchSharp } from "react-icons/io5";
+import { FaPersonCircleCheck } from "react-icons/fa6";
+import { FaPersonCircleXmark } from "react-icons/fa6";
+import { GiMoneyStack } from "react-icons/gi";
+import { TbReport } from "react-icons/tb";
+import { GiReceiveMoney } from "react-icons/gi";
+import { IoSettingsOutline } from "react-icons/io5";
+import { HiMiniSquare3Stack3D } from "react-icons/hi2";
+import { GiTakeMyMoney } from "react-icons/gi";
+
+const DrawerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+`;
+
+const SearchContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 5px;
+  margin-top:8px;
+  padding: 8px;
+  border-radius: 5px;
+`;
+
+const SearchInputContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 10px;
+  background-color: #fff;
+  box-sizing: border-box;
+`;
+
+const SearchIcon = styled.div`
+  font-size: 20px;
+  color: #ccc;
+  margin-right: 8px;
+`;
+
+const SearchBar = styled.input`
+  border: none;
+  outline: none;
+  flex-grow: 1;
+  font-size: 14px;
+  width: 100%;
+`;
+
+const Divider = styled.hr`
+  width: 100%;
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 5px 0;
+`;
+
+const IconList = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const IconItem = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 550;
+  color: #2c3e50;
+  border-radius: 4px; /* Rounded corners */
+  transition: background-color 0.3s;
+  padding-left:30px;
+  svg {
+    margin-right: 10px;
+    font-size: 20px;
+    color: darkgray;
+    transition: color 0.3s;
+  }
+
+  &:hover svg {
+    color: #2c3e50;
+  }
+  &:hover {
+    background-color: lightgray;
+  }
+
+  cursor: pointer;
+`;
+
+const Head = styled.div`
+  color: #2c3e50;
+  padding-left: 15px;
+  font-weight: 550;
+  margin-bottom: 6px;
+`;
+
+const iconData = [
+  { id: 1, name: "Dashboard", icon: <MdComputer /> },
+  { id: 2, name: "Feedbacks", icon: <VscFeedback /> },
+  { id: 3, name: "Leaves", icon: <FaPersonCircleXmark /> },
+  { id: 4, name: "Attendance", icon: <FaPersonCircleCheck /> },
+  { id: 5, name: "Daily Timesheet", icon: <FaRegCalendarAlt /> },
+  { id: 6, name: "Work log", icon: <BsPersonWorkspace /> },
+  { id: 7, name: "Reimbursements", icon: <GiMoneyStack /> },
+  { id: 8, name: "Reports", icon: <TbReport /> },
+  { id: 9, name: "My Expenses", icon: <GiTakeMyMoney /> },
+  { id: 10, name: "Income", icon: <GiReceiveMoney /> },
+  { id: 11, name: "Categories", icon: <HiMiniSquare3Stack3D /> },
+  { id: 12, name: "Settings", icon: <IoSettingsOutline /> },
+];
+
+const Drawers = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredIcons = iconData.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <DrawerWrapper>
+      <SearchContainer>
+        <SearchInputContainer>
+          <SearchIcon>
+            <IoSearchSharp />
+          </SearchIcon>
+          <SearchBar
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </SearchInputContainer>
+      </SearchContainer>
+      <Divider />
+      <Head><div>My Options</div></Head>
+      <IconList>
+        {filteredIcons.map((item, index) => (
+          <React.Fragment key={item.id}>
+            {item.name === "Reports" && <Divider />}
+            <IconItem>
+              {item.icon}
+              <span>{item.name}</span>
+            </IconItem>
+          </React.Fragment>
+        ))}
+        {filteredIcons.length === 0 && <p>No results found</p>}
+      </IconList>
+    </DrawerWrapper>
+  );
+};
+
+export default Drawers;
