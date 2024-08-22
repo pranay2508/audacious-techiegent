@@ -85,6 +85,10 @@ const ProfileIcon = styled.div`
   svg {
     margin-left: 5px;
   }
+
+  @media (max-width: 480px) {
+    margin-top: 8px;
+  }
 `;
 
 const ProfileAndStopwatchWrapper = styled.div`
@@ -127,7 +131,7 @@ const DropdownMenu = styled.div`
 
   @media (max-width: 480px) {
     width: 150px;
-    top: 45px;
+    top: 45px; /* Adjusted to ensure it appears below the profile icon */
   }
 `;
 
